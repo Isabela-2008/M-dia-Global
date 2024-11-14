@@ -1,0 +1,37 @@
+Enunciado
+Título: Calculadora de Média para Aprovação
+
+Descrição:
+Desenvolver uma aplicação desktop que permita a alunos calcular suas médias escolares em várias disciplinas e determinar a quantidade de pontos necessários para aprovação no terceiro trimestre. A aplicação deve permitir a entrada de notas de dois trimestres e fornecer feedback sobre a situação de aprovação do aluno, além de calcular médias necessárias.
+
+Funcionalidades:
+
+Entrada de notas para duas avaliações em várias disciplinas.
+Cálculo automático da média das avaliações.
+Cálculo de quantos pontos o aluno precisa para atingir a média de aprovação (6.0).
+Indicação se o aluno já está aprovado com base nas notas inseridas.
+Interface gráfica amigável utilizando a biblioteca Tkinter do Python.
+Requisitos Técnicos:
+
+Python 3.x
+Tkinter (biblioteca padrão para interfaces gráficas)
+README.md
+markdown
+# Calculadora de Média para Aprovação  
+
+Este projeto é uma aplicação desktop desenvolvida em Python utilizando a biblioteca Tkinter, que permite a alunos calcular suas médias escolares em diferentes disciplinas e determinar quantos pontos são necessários para a aprovação.  
+
+## Funcionalidades  
+
+- **Entrada de Notas:** O usuário pode inserir notas de duas avaliações para diversas disciplinas.  
+- **Cálculo de Média:** A aplicação calcula automaticamente a média das duas notas inseridas.  
+- **Pontos Necessários:** Informa quantos pontos são necessários para alcançar a média de 6.0 e indica se o aluno já está aprovado.  
+- **Interface Gráfica:** A interface é simples e intuitiva, facilitando a interação do usuário.  
+
+## Instalação  
+
+1. Certifique-se de que você tem Python 3.x instalado em seu sistema.  
+2. Clone este repositório:  
+
+   ```bash  
+   git clone https://github.com/seu_usuario/calculadora_media.git  
