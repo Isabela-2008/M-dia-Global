@@ -1,0 +1,112 @@
+import tkinter as tk  
+from tkinter import messagebox  
+
+def calcular_media(nota1, nota2):  
+    return (nota1 + nota2) / 2  
+
+def calcular_media_necessaria(nota1, nota2, media_global=6.0):  
+    return (media_global * 3) - (nota1 + nota2)  
+
+def calcular(nota1_entry, nota2_entry):  
+    try:  
+        nota1 = float(nota1_entry.get()) if nota1_entry.get() else 0.0  
+        nota2 = float(nota2_entry.get()) if nota2_entry.get() else 0.0  
+        
+        if nota1_entry.get() and nota2_entry.get():  
+            media = calcular_media(nota1, nota2)  
+            if media >= 6.0:  
+                messagebox.showinfo("Resultado", f"As notas já estão fechadas. Não é necessário nenhuma nota para passar. A média é: {media:.1f}.")  
+            else:  
+                media_necessaria = calcular_media_necessaria(nota1, nota2)  
+                messagebox.showinfo("Resultado", f"Média: {media:.1f}\nMédia necessária para 3º trimestre: {media_necessaria:.1f}")  
+            return  
+
+        # Calcula a média normalmente se as notas não estão fechadas  
+        media = calcular_media(nota1, nota2)  
+        media_necessaria = calcular_media_necessaria(nota1, nota2)  
+        
+        # Formata a mensagem  
+        mensagem = (f"Média: {media:.1f}\n"  
+                    f"Média necessária para 3º trimestre: {media_necessaria:.1f}")  
+        messagebox.showinfo("Resultado", mensagem)  
+
+    except ValueError:  
+        messagebox.showerror("Erro", "Insira valores numéricos válidos para as notas.")  
+
+def calcular_pontos_necessarios():  
+    mensagem = []  
+    for disciplina, (entrada1, entrada2) in disciplinas_entradas.items():  
+        try:  
+            nota1 = float(entrada1.get()) if entrada1.get() else 0.0  
+            nota2 = float(entrada2.get()) if entrada2.get() else 0.0  
+            
+            media = calcular_media(nota1, nota2)  
+            if media >= 6.0:  
+                mensagem.append(f"{disciplina}: Aprovado!")  
+            else:  
+                media_necessaria = calcular_media_necessaria(nota1, nota2)  
+                mensagem.append(f"{disciplina}: {media_necessaria:.1f} pontos necessários para passar.")  
+            
+        except ValueError:  
+            mensagem.append(f"{disciplina}: Insira notas válidas para cálculo.")  
+
+    messagebox.showinfo("Pontos Necessários", "\n".join(mensagem))  
+
+# Configuração da interface gráfica  
+root = tk.Tk()  
+root.title("Calculadora de Média para Aprovação")  
+
+# Cabeçalho  
+tk.Label(root, text="Componentes Curriculares", font=("Arial", 10, "bold")).grid(row=0, column=0, padx=5, pady=5, columnspan=4)  
+tk.Label(root, text="1º Trimestre", font=("Arial", 10, "bold")).grid(row=0, column=4, padx=5, pady=5)  
+tk.Label(root, text="2º Trimestre", font=("Arial", 10, "bold")).grid(row=0, column=5, padx=5, pady=5)  
+
+# Dicionário para armazenar as entradas de notas  
+disciplinas_entradas = {}  
+
+# Disciplinas  
+disciplinas = {  
+    "Educação Física": ["Educação Física"],  
+    "Língua Estrangeira - Inglês": ["Língua Estrangeira - Inglês"],  
+    "Português e Literatura": ["Português e Literatura"],  
+    "Arte": ["Arte"],  
+    "Ciências": ["Biologia", "Física", "Química"],  
+    "Geografia": ["Geografia"],  
+    "História": ["História"],  
+    "Sociologia": ["Sociologia"],  
+    "Filosofia": ["Filosofia"],  
+    "Matemática": ["Matemática"],  
+    "Língua Estrangeira - Espanhol": ["Língua Estrangeira - Espanhol"],  
+    "Projeto de Vida": ["Projeto de Vida"]  
+}  
+
+# Cria a tabela de entradas  
+linha = 1  
+for area, comps in disciplinas.items():  
+    for comp in comps:  
+        tk.Label(root, text=comp).grid(row=linha, column=0, padx=5, pady=5, sticky="w")  
+        
+        entrada_nota1 = tk.Entry(root, width=5)  
+        entrada_nota2 = tk.Entry(root, width=5)  
+        
+        entrada_nota1.grid(row=linha, column=4, padx=5, pady=5)  
+        entrada_nota2.grid(row=linha, column=5, padx=5, pady=5)  
+
+        # Botão para calcular a média  
+        botao_calcular = tk.Button(root, text="Calcular Média", command=lambda e1=entrada_nota1, e2=entrada_nota2: calcular(e1, e2))  
+        botao_calcular.grid(row=linha, column=6, padx=5, pady=5)  
+        
+        disciplinas_entradas[comp] = (entrada_nota1, entrada_nota2)  
+        linha += 1  
+        
+        # Adiciona uma linha de separação  
+        separator = tk.Frame(root, height=1, background="black")  
+        separator.grid(row=linha, column=0, columnspan=7, sticky="ew")  
+        linha += 1  
+
+# Botão para calcular pontos necessários  
+botao_pontos_necessarios = tk.Button(root, text="Calcular Pontos Necessários", command=calcular_pontos_necessarios)  
+botao_pontos_necessarios.grid(row=linha, column=0, columnspan=7, padx=5, pady=10)  
+
+# Inicia o loop da interface  
+root.mainloop()
