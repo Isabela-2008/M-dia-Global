@@ -1,0 +1,35 @@
+Licença
+Este projeto não possui uma licença específica. Sinta-se à vontade para usar e modificar conforme necessário.
+
+yaml
+
+### .gitignore  
+---  
+Python bytecode
+pycache/
+*.py[cod]
+
+Environment variables
+.env
+
+IDEs
+.vscode/
+.idea/
+
+Virtual Environments
+venv/
+env/
+env.bak/
+
+Backup files
+*.bak
+*.swp
+
+markdown
+
+### Explicações  
+- **Enunciado:** Resumo do projeto, destacando seu propósito e funcionalidades principais, além de requisitos técnicos.  
+- **README.md:** Um guia abrangente que ajuda usuários a entender e usar a aplicação, incluindo instruções de instalação e uso. Além disso, aborda contribuições e inclui informações sobre licença.  
+- **.gitignore:** Este arquivo deve ser colocado na raiz do seu repositório Git e ajuda a ignorar arquivos desnecessários que não devem ser controlados pelo Git, como arquivos de bytecode Python e configurações de IDE.  
+
+Esses documentos devem fornecer uma base sólida para o seu projeto. Se precisar de mais detalhes ou ajustes, é só avisar!
